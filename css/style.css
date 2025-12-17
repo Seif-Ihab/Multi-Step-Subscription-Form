@@ -1,0 +1,612 @@
+/* =====================================================
+   RESET & GLOBAL SETTINGS
+===================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =====================================================
+   CSS VARIABLES (COLOR PALETTE)
+===================================================== */
+:root {
+    --Blue950: hsl(213, 96%, 18%);
+    --Purple600: hsl(243, 100%, 62%);
+    --Blue300: hsl(228, 100%, 84%);
+    --Blue200: hsl(206, 94%, 87%);
+    --Red500: hsl(354, 84%, 57%);
+    --Gray500: hsl(231, 11%, 63%);
+    --Purple200: hsl(229, 24%, 87%);
+    --Blue100: hsl(218, 100%, 97%);
+    --Blue50: hsl(231, 100%, 99%);
+    --White: hsl(0, 100%, 100%);
+}
+
+/* =====================================================
+   UTILITY CLASSES
+===================================================== */
+.hidden {
+    display: none;
+}
+
+/* =====================================================
+   BASE STYLES
+===================================================== */
+body {
+    height: 100vh;
+    width: 100%;
+    font-family: 'Ubuntu', sans-serif;
+    background-color: var(--Blue100);
+}
+
+/* =====================================================
+   HEADER (MOBILE STEP INDICATORS)
+===================================================== */
+header {
+    width: 100%;
+    height: 200px;
+    padding: 3rem;
+    background-image: url("/assets/images/bg-sidebar-mobile.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+/* Hide header on desktop */
+@media (min-width: 768px) {
+    header {
+        display: none;
+    }
+}
+
+/* Step Circle */
+.steps {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--Blue200);
+    border-radius: 50%;
+    color: var(--Blue200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+/* Active Step */
+.active {
+    background-color: var(--Blue200);
+    color: var(--Blue950);
+}
+
+/* =====================================================
+   FOOTER (MOBILE NAVIGATION BUTTONS)
+===================================================== */
+footer {
+    width: 100%;
+    padding: 1rem;
+    position: absolute;
+    bottom: 0;
+    background-color: var(--White);
+    display: flex;
+    align-items: center;
+}
+
+/* Hide footer on desktop */
+@media (min-width: 768px) {
+    footer {
+        display: none;
+    }
+}
+
+/* Buttons */
+.next-btn {
+    margin-left: auto;
+    padding: 0.75rem 1rem;
+    background-color: var(--Blue950);
+    color: var(--Blue200);
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.confirm-btn {
+    margin-left: auto;
+    padding: 0.75rem 1rem;
+    background-color: var(--Purple600);
+    color: var(--Blue200);
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.back-btn {
+    background-color: transparent;
+    color: var(--Gray500);
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+main {
+    width: 90%;
+    padding: 1rem;
+    background-color: var(--White);
+    position: absolute;
+    top: 17%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+/* Tablet */
+@media (min-width: 40rem) {
+    main {
+        width: 80%;
+    }
+}
+
+/* Desktop */
+@media (min-width: 48rem) {
+    main {
+        width: auto;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* =====================================================
+   DESKTOP STEPS SIDEBAR
+===================================================== */
+.steps-container {
+    flex: 0 0 clamp(210px, 25vw, 250px);
+    padding: 1.5rem;
+    background-image: url("/assets/images/bg-sidebar-desktop.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: none;
+    flex-direction: column;
+    gap: 2.5rem;
+    border-radius: 10px;
+}
+
+/* Show on desktop */
+@media (min-width: 48rem) {
+    .steps-container {
+        display: flex;
+    }
+}
+
+.step-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.step-warpper {
+    display: flex;
+    flex-direction: column;
+}
+
+.step-warpper :nth-child(1) {
+    color: var(--Purple200);
+    text-transform: uppercase;
+}
+
+.step-warpper :nth-child(2) {
+    color: var(--Blue50);
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+/* =====================================================
+   FORM CONTAINER (ALL STEPS)
+===================================================== */
+.form {
+    padding: 1rem;
+}
+
+/* Desktop padding adjustments */
+@media (min-width: 48rem) {
+    .form {
+        padding: 2rem 2rem 1rem;
+    }
+}
+
+@media (min-width: 64rem) {
+    .form {
+        padding: 2rem 4.5rem 1rem;
+    }
+}
+
+.form h1 {
+    color: var(--Blue950);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.form p {
+    color: var(--Gray500);
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 48rem) {
+    .form p {
+        min-width: 350px;
+    }
+}
+
+/* Hide internal buttons on mobile */
+.form .buttons {
+    display: none;
+}
+
+/* Show internal buttons on desktop */
+@media (min-width: 48rem) {
+    .form .buttons {
+        display: flex;
+    }
+}
+
+/* =====================================================
+   STEP 1 – PERSONAL INFO
+===================================================== */
+.one label {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--Blue950);
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.one input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--Blue200);
+    border-radius: 10px;
+    color: var(--Blue950);
+}
+
+.one input:focus {
+    outline: none;
+    border-color: var(--Purple600);
+}
+
+@media (min-width: 48rem) {
+    .one input:last-of-type {
+        margin-bottom: 6rem;
+    }
+}
+
+/* =====================================================
+   STEP 2 – PLAN SELECTION
+===================================================== */
+.two .plans {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 40rem) {
+    .two .plans {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+/* Hide radio inputs */
+.two input[type="radio"] {
+    appearance: none;
+}
+
+/* Plan Card */
+.two .plans-comp {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--Purple200);
+    border-radius: 10px;
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+@media (min-width: 40rem) {
+    .two .plans-comp {
+        width: 140px;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .two .plans-comp img {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Selected Plan */
+.two input:checked+.plans-comp {
+    background-color: var(--Blue100);
+    border-color: var(--Purple600);
+}
+
+/* Plan Info */
+.two .plan-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.two .plan-info span:nth-of-type(1) {
+    color: var(--Blue950);
+    font-weight: 700;
+}
+
+.two .plan-info span:nth-of-type(2),
+.two .plan-info span:nth-of-type(2) span {
+    color: var(--Gray500);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.two .plan-info span:nth-of-type(3) {
+    color: var(--Blue950);
+    font-weight: 500;
+}
+
+/* =====================================================
+   STEP 3 – ADD-ONS
+===================================================== */
+.addons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.addon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--Purple200);
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+    transition: border 0.2s, background 0.2s;
+}
+
+@media (min-width: 48rem) {
+    .addons {
+        margin-bottom: 4rem;
+    }
+}
+
+.addon:hover {
+    border-color: var(--Purple600);
+}
+
+.addon input {
+    accent-color: var(--Purple600);
+    margin-right: 15px;
+}
+
+.addon-info {
+    flex: 1;
+}
+
+.addon-info .title {
+    display: block;
+    font-weight: 600;
+    color: var(--Blue950);
+}
+
+.addon-info .desc {
+    font-size: 14px;
+    color: var(--Gray500);
+}
+
+.price {
+    font-size: 14px;
+    color: var(--Purple600);
+    font-weight: 500;
+}
+
+/* Highlight when checked */
+.addon input:checked+.addon-info,
+.addon input:checked~.price {
+    background: none;
+}
+
+.addon:has(input:checked) {
+    background: var(--Blue100);
+    border-color: var(--Purple600);
+}
+
+/* =====================================================
+   STEP 4 – SUMMARY
+===================================================== */
+.summary {
+    background-color: var(--Blue100);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.plan-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.plan-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.plan-name span:nth-of-type(1) {
+    color: var(--Blue950);
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-bottom: 0.25rem;
+}
+
+.plan-name span:nth-of-type(2) {
+    color: var(--Gray500);
+    font-weight: 400;
+    text-decoration: underline;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.plan-summary #selected-plan-price {
+    color: var(--Blue950);
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.addons-summary {
+    border-top: 1px solid var(--Purple200);
+    margin-top: 2rem;
+}
+
+.addon-summary-item {
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.addon-summary-item span:nth-last-of-type(2) {
+    color: var(--Gray500);
+}
+
+.addon-summary-item span:nth-last-of-type(1) {
+    color: var(--Blue950);
+}
+
+.total {
+    padding: 1rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.total #total-price {
+    color: var(--Purple600);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.total span:first-of-type,
+.total span:first-of-type span {
+    color: var(--Gray500);
+    font-weight: 300;
+}
+
+@media (min-width: 48rem) {
+    .total {
+        margin-bottom: 5rem;
+    }
+}
+
+/* =====================================================
+   BILLING TOGGLE SWITCH
+===================================================== */
+.switch-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0.75rem;
+    background-color: var(--Blue100);
+    border-radius: 10px;
+}
+
+@media (min-width: 48rem) {
+    .switch-btn {
+        margin-bottom: 4rem;
+    }
+}
+
+.switch-btn input {
+    appearance: none;
+    position: absolute;
+}
+
+.switch-btn label {
+    width: 40px;
+    height: 22px;
+    background-color: var(--Blue950);
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.switch-btn label span {
+    width: 14px;
+    height: 14px;
+    background-color: var(--White);
+    border-radius: 50%;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    transition: transform 0.4s;
+}
+
+input:checked+label span {
+    transform: translateX(16px);
+}
+
+/* =====================================================
+   CONFIRMATION PAGE (JS GENERATED)
+===================================================== */
+.confirmation {
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.confirmation img {
+    margin-bottom: 2rem;
+}
+
+.confirmation h1 {
+    color: var(--Blue950);
+    margin-bottom: 2rem;
+}
+
+.confirmation p {
+    color: var(--Gray500);
+    font-size: 1rem;
+    width: 80%;
+}
+
+@media (min-width: 48rem) {
+    .confirmation {
+        height: 600px;
+    }
+
+    .confirmation p {
+        min-width: 400px;
+    }
+}

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ================= META DATA ================= -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A multi step form component built with HTML and CSS" />
+
+  <!-- ================= GOOGLE FONT ================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet" />
+
+  <!-- ================= STYLESHEET ================= -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <title>Multi Step Form</title>
+</head>
+
+<body>
+
+  <!-- =====================================================
+       HEADER – MOBILE STEP INDICATORS
+  ====================================================== -->
+  <header>
+    <div class="steps active">1</div>
+    <div class="steps">2</div>
+    <div class="steps">3</div>
+    <div class="steps">4</div>
+  </header>
+
+  <main>
+
+    <!-- =====================================================
+         SIDEBAR – STEP INDICATORS WITH LABELS
+    ====================================================== -->
+    <div class="steps-container">
+
+      <!-- Step 1 -->
+      <div class="step-box">
+        <div class="steps active">1</div>
+        <div class="step-warpper">
+          <span>step 1</span>
+          <span>your info</span>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-box">
+        <div class="steps">2</div>
+        <div class="step-warpper">
+          <span>step 2</span>
+          <span>select plan</span>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-box">
+        <div class="steps">3</div>
+        <div class="step-warpper">
+          <span>step 3</span>
+          <span>add-ons</span>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step-box">
+        <div class="steps">4</div>
+        <div class="step-warpper">
+          <span>step 4</span>
+          <span>summary</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =====================================================
+         MULTI STEP FORM
+    ====================================================== -->
+    <form id="multiStepForm" class="forms">
+
+      <!-- ================= STEP 1 – PERSONAL INFO ================= -->
+      <div class="form one hidden">
+        <h1>Personal info</h1>
+        <p>Please provide your name, email address, and phone number.</p>
+
+        <label for="name">name</label>
+        <input type="text" id="name" placeholder="Enter your name" required autofocus>
+
+        <label for="email">email address</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+
+        <label for="phone">phone number</label>
+        <input type="tel" id="phone" placeholder="e.g. +1 234 567 890" required>
+
+        <div class="buttons">
+          <button type="button" class="next-btn">next step</button>
+        </div>
+      </div>
+
+      <!-- ================= STEP 2 – SELECT PLAN ================= -->
+      <div class="form two hidden">
+        <h1>Select your plan</h1>
+        <p>You have the option of monthly or yearly billing.</p>
+
+        <!-- Plans -->
+        <div class="plans">
+
+          <!-- Arcade Plan -->
+          <input type="radio" name="plane" id="arcade" value="arcade" data-price="9">
+          <label for="arcade" class="plans-comp">
+            <img src="assets/images/icon-arcade.svg" alt="arcade icon">
+            <div class="plan-info">
+              <span>Arcade</span>
+              <span>$9<span class="year hidden">0</span><span class="month">/mo</span><span
+                  class="year">/yr</span></span>
+              <span class="year hidden">2 months free</span>
+            </div>
+          </label>
+
+          <!-- Advanced Plan -->
+          <input type="radio" name="plane" id="advanced" value="advanced" data-price="12" checked>
+          <label for="advanced" class="plans-comp">
+            <img src="assets/images/icon-advanced.svg" alt="advanced icon">
+            <div class="plan-info">
+              <span>Advanced</span>
+              <span>$12<span class="year hidden">0</span><span class="month">/mo</span><span
+                  class="year">/yr</span></span>
+              <span class="year hidden">2 months free</span>
+            </div>
+          </label>
+
+          <!-- Pro Plan -->
+          <input type="radio" name="plane" id="pro" value="pro" data-price="15">
+          <label for="pro" class="plans-comp">
+            <img src="assets/images/icon-pro.svg" alt="pro icon">
+            <div class="plan-info">
+              <span>Pro</span>
+              <span>$15<span class="year hidden">0</span><span class="month">/mo</span><span
+                  class="year">/yr</span></span>
+              <span class="year hidden">2 months free</span>
+            </div>
+          </label>
+
+        </div>
+
+        <!-- Billing Toggle -->
+        <div class="switch-btn">
+          <span id="monthly">Monthly</span>
+
+          <input type="checkbox" id="toggle-switch">
+          <label for="toggle-switch" class="toggle-switch">
+            <span class="slider"></span>
+          </label>
+
+          <span id="yearly">Yearly</span>
+        </div>
+
+        <div class="buttons">
+          <button type="button" class="back-btn">go back</button>
+          <button type="button" class="next-btn">next step</button>
+        </div>
+      </div>
+
+      <!-- ================= STEP 3 – ADD ONS ================= -->
+      <div class="form three hidden">
+        <h1>Pick add-ons</h1>
+        <p>Add-ons help enhance your gaming experience</p>
+
+        <div class="addons">
+          <label class="addon">
+            <input type="checkbox" data-price="1">
+            <div class="addon-info">
+              <span class="title">Online service</span>
+              <span class="desc">Access to multiplayer games</span>
+            </div>
+            <span class="price">+$1<span class="year">0</span><span class="month">/mo</span><span
+                class="year">/yr</span></span>
+          </label>
+
+          <label class="addon">
+            <input type="checkbox" data-price="2">
+            <div class="addon-info">
+              <span class="title">Larger storage</span>
+              <span class="desc">Extra 1TB of cloud save</span>
+            </div>
+            <span class="price">+$2<span class="year">0</span><span class="month">/mo</span><span
+                class="year">/yr</span></span>
+          </label>
+
+          <label class="addon">
+            <input type="checkbox" data-price="2">
+            <div class="addon-info">
+              <span class="title">Customizable profile</span>
+              <span class="desc">Custom theme on your profile</span>
+            </div>
+            <span class="price">+$2<span class="year">0</span><span class="month">/mo</span><span
+                class="year">/yr</span></span>
+          </label>
+        </div>
+
+        <div class="buttons">
+          <button type="button" class="back-btn">go back</button>
+          <button type="button" class="next-btn">next step</button>
+        </div>
+      </div>
+
+      <!-- ================= STEP 4 – SUMMARY ================= -->
+      <div class="form four ">
+        <h1>Finishing up</h1>
+        <p>Double-check everything looks OK before confirming</p>
+
+        <div class="summary">
+          <div class="plan-summary">
+            <div class="plan-name">
+              <span id="selected-plan-name"></span>
+              <span id="plan-change">change</span>
+            </div>
+            <span id="selected-plan-price"></span>
+          </div>
+
+          <div class="addons-summary">
+            <!-- Add-ons will be dynamically added here -->
+          </div>
+        </div>
+
+        <div class="total">
+          <span>Total <span class="month">(per month)</span><span class="year hidden">(per year)</span></span>
+          <span id="total-price"></span>
+        </div>
+
+
+        <div class="buttons">
+          <button type="button" class="back-btn">go back</button>
+          <button type="button" class="confirm-btn">confirm</button>
+        </div>
+      </div>
+
+    </form>
+  </main>
+
+  <!-- =====================================================
+       FOOTER – MOBILE NAVIGATION BUTTONS
+  ====================================================== -->
+  <footer>
+    <button type="button" class="back-btn hidden">go back</button>
+    <button type="button" class="next-btn">next step</button>
+    <button type="button" class="confirm-btn hidden">confirm</button>
+  </footer>
+
+  <!-- ================= SCRIPT ================= -->
+  <script src="js/script.js"></script>
+
+</body>
+
+</html>
